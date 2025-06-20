@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 export const TestimonialSection = () => {
   const testimonials = [
     {
-      quote: "Wonder Holidays has transformed how we manage business travel. The platform is intuitive, the support is exceptional, and we've seen significant cost savings.",
+      quote: "MyPartnerKetakiWorld has transformed how we manage business travel. The platform is intuitive, the support is exceptional, and we've seen significant cost savings.",
       author: "Sarah Johnson",
       position: "Travel Manager",
       company: "Global Tech Solutions",
@@ -21,7 +20,7 @@ export const TestimonialSection = () => {
       rating: 5
     },
     {
-      quote: "Our team members love the mobile app and the 24/7 support. Even when flights are canceled, Wonder Holidays ensures our travelers are taken care of immediately.",
+      quote: "Our team members love the mobile app and the 24/7 support. Even when flights are canceled, MyPartnerKetakiWorld ensures our travelers are taken care of immediately.",
       author: "Priya Patel",
       position: "HR Director",
       company: "Nexus Enterprises",
@@ -48,7 +47,7 @@ export const TestimonialSection = () => {
             What Our Partners Are <span className="gradient-text">Saying</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover how businesses are transforming their travel management with Wonder Holidays.
+            Discover how businesses are transforming their travel management with MyPartnerKetakiWorld.
           </p>
         </div>
 

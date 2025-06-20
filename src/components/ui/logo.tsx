@@ -1,4 +1,3 @@
-
 import { Globe, Plane } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -33,7 +32,7 @@ export function Logo({
         </div>
       )}
       <span className={`font-bold ${sizeClasses[size]} ${textColor}`}>
-        Wonder<span className={accentColor}>Holidays</span>
+        MyPartner<span className={accentColor}>KetakiWorld</span>
       </span>
     </Link>
   );

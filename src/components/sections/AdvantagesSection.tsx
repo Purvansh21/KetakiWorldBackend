@@ -35,7 +35,7 @@ export const AdvantagesSection = () => {
           <div className="md:w-1/3">
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Why Travel Agents Trust Wonder Holidays
+                Why Travel Agents Trust MyPartnerKetakiWorld
             </h2>
             <div className="hidden md:block relative">
               <img 
@@ -68,9 +68,9 @@ export const AdvantagesSection = () => {
             </div>
           </div>
         </div>
-        {/* New Section: Why Travel Agents Prefer Wonder Holidays */}
+        {/* New Section: Why Travel Agents Prefer MyPartnerKetakiWorld */}
         <div className="mt-16">
-          <h3 className="text-2xl font-bold mb-6 text-center">Why Travel Agents Prefer Wonder Holidays</h3>
+          <h3 className="text-2xl font-bold mb-6 text-center">Why Travel Agents Prefer MyPartnerKetakiWorld</h3>
           <ul className="max-w-2xl mx-auto space-y-4 text-lg">
             <li className="flex items-start gap-2"><Check className="mt-1 text-partner-500" />Unbeatable Pricing: Access special B2B-only rates for flights and hotels</li>
             <li className="flex items-start gap-2"><Check className="mt-1 text-partner-500" />Massive Inventory: Over 4 lakh hotels and 150+ international airlines</li>

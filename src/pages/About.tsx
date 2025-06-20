@@ -33,11 +33,12 @@ const About = () => {
             <h1 className="text-4xl font-bold mb-2 text-partner-600">About Us</h1>
             <div className="w-24 h-1 bg-partner-400 rounded mb-8" />
             <h2 className="text-2xl font-semibold mb-4">Your Trusted Travel Partner</h2>
-            <p className="text-lg mb-4">
-              At Wonder Holidays, we help travel agents grow their business by making travel bookings simpler, faster, and more reliable. Our platform is designed to give you access to the best deals on flights, hotels, and travel packages all in one place.
+            <p className="text-lg leading-relaxed mb-6">
+              At MyPartnerKetakiWorld, we help travel agents grow their business by making travel bookings simpler, faster, and more reliable. Our platform is designed to give you access to the best deals on flights, hotels, and travel packages all in one place.
             </p>
-            <p className="text-lg mb-4">
-              With a wide network of over 150 airlines and more than 4,00,000 hotel properties, we offer you the flexibility and variety your customers expect. From solo travelers to large groups, luxury stays to budget trips, everything your customer needs is just a few clicks away.
+            <p className="text-lg leading-relaxed">
+              <span className="font-semibold text-partner-600">MyPartnerKetakiWorld is made for agents who want more from their travel platform.</span>
+              Whether you're a solo agent or a large agency, our tools empower you to serve your clients better and boost your profits.
             </p>
             <h3 className="text-xl font-semibold mt-8 mb-4">What Sets Us Apart</h3>
             <ul className="space-y-4 mb-6">
@@ -48,10 +49,6 @@ const About = () => {
                 </li>
               ))}
             </ul>
-            <p className="text-lg">
-              We are here to simplify travel for you and help your agency build lasting customer relationships through smooth and professional service.<br/>
-              <span className="font-semibold text-partner-600">Wonder Holidays is made for agents who want more from their travel platform.</span>
-            </p>
           </div>
         </section>
       </main>

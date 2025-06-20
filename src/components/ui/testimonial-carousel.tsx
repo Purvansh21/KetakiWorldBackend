@@ -64,9 +64,14 @@ export const TestimonialCarousel = React.forwardRef<HTMLDivElement, TestimonialC
                 <h5 className="mt-5 font-medium text-muted-foreground">
                   {testimonial.name}
                 </h5>
+                {/* Removed role as per user request */}
+                {/*
                 <h5 className="mt-1.5 font-medium text-foreground/40">
                   {testimonial.role}
                 </h5>
+                */}
+                {/* Removed avatar as per user request */}
+                {/*
                 <div className="mt-5 relative w-12 h-12 rounded-full overflow-hidden bg-muted">
                   <img
                     src={`${avatarPath}${testimonial.avatar}`}
@@ -74,6 +79,7 @@ export const TestimonialCarousel = React.forwardRef<HTMLDivElement, TestimonialC
                     className="w-full h-full object-cover"
                   />
                 </div>
+                */}
               </CarouselItem>
             ))}
           </CarouselContent>

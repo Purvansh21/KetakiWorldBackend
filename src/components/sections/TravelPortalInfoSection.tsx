@@ -56,7 +56,7 @@ export const TravelPortalInfoSection = () => {
             </h3>
             <div className="space-y-4">
               <p>
-                With Wonder Holidays, you get the tools, support, and pricing needed to run a profitable travel business. From fast bookings to branded confirmations, you stay in control and ahead.
+                With MyPartnerKetakiWorld, you get the tools, support, and pricing needed to run a profitable travel business. From fast bookings to branded confirmations, you stay in control and ahead.
                 </p>
             </div>
           </div>

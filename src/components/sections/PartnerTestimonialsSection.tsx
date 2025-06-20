@@ -7,21 +7,21 @@ export const PartnerTestimonialsSection = () => {
       avatar: "https://randomuser.me/api/portraits/men/48.jpg",
       name: "Rajesh Kumar",
       role: "CEO, Traviz Idea",
-      review: "Wonder Holidays has transformed our travel business. The platform's ease of use and extensive inventory have helped us serve our customers better than ever before."
+      review: "MyPartnerKetakiWorld has transformed our travel business. The platform's ease of use and extensive inventory have helped us serve our customers better than ever before."
     },
     {
       company: "modi-travels",
       avatar: "https://randomuser.me/api/portraits/women/75.jpg",
       name: "Ajay Modi",
       role: "Director, Modi Travels",
-      review: "The real-time booking capabilities and competitive pricing have made Wonder Holidays our preferred B2B travel partner. Their support team is exceptional!"
+      review: "The real-time booking capabilities and competitive pricing have made MyPartnerKetakiWorld our preferred B2B travel partner. Their support team is exceptional!"
     },
     {
       company: "hudels",
       avatar: "https://randomuser.me/api/portraits/men/22.jpg",
       name: "Priya Sharma",
       role: "Founder, Hudels Hospitality",
-      review: "As a growing travel agency, Wonder Holidays has been instrumental in our success. Their platform's reliability and comprehensive features are unmatched."
+      review: "As a growing travel agency, MyPartnerKetakiWorld has been instrumental in our success. Their platform's reliability and comprehensive features are unmatched."
     }
   ];
 
@@ -33,7 +33,7 @@ export const PartnerTestimonialsSection = () => {
             Trusted by Leading Travel Partners
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Join thousands of successful travel businesses that have grown with Wonder Holidays
+            Join thousands of successful travel businesses that have grown with MyPartnerKetakiWorld
           </p>
         </div>
         

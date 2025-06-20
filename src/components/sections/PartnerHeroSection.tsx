@@ -20,7 +20,7 @@ export const PartnerHeroSection = () => {
               </div>
               <div>
                 <h2 className="text-3xl font-bold">
-                  Become a <span className="text-wonder-600">Wonder</span><span className="text-partner-600">Holidays</span> Partner
+                  Become a <span className="text-wonder-600">MyPartner</span><span className="text-partner-600">KetakiWorld</span> Partner
                 </h2>
                 <p className="text-lg text-gray-700">Get Exclusive Rewards & Benefits!</p>
               </div>

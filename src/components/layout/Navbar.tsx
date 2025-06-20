@@ -42,16 +42,7 @@ export const Navbar = () => {
 
           {/* Desktop Action Buttons */}
           <div className="hidden md:flex md:items-center md:space-x-3">
-            <AuthDialog>
-              <Button variant="outline" className="border-wonder-500 text-wonder-700 hover:bg-wonder-50">
-                Log in
-              </Button>
-            </AuthDialog>
-            <AuthDialog>
-              <Button className="bg-partner-500 hover:bg-partner-600 text-white">
-                Get Started
-              </Button>
-            </AuthDialog>
+            <AuthDialog />
           </div>
 
           {/* Mobile menu button */}
@@ -87,21 +78,7 @@ export const Navbar = () => {
               </a>
             ))}
             <div className="pt-4 pb-3 space-y-3">
-              <AuthDialog>
-                <Button 
-                  variant="outline" 
-                  className="w-full border-wonder-500 text-wonder-700 hover:bg-wonder-50"
-                >
-                  Log in
-                </Button>
-              </AuthDialog>
-              <AuthDialog>
-                <Button 
-                  className="w-full bg-partner-500 hover:bg-partner-600 text-white"
-                >
-                  Get Started
-                </Button>
-              </AuthDialog>
+              <AuthDialog />
             </div>
           </div>
         </div>

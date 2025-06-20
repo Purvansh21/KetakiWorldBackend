@@ -7,7 +7,6 @@ import { PartnerHeroSection } from "@/components/sections/PartnerHeroSection";
 import { PartnersSection } from "@/components/sections/PartnersSection";
 import { PartnerTestimonialsSection } from "@/components/sections/PartnerTestimonialsSection";
 import { SignUpPromotionSection } from "@/components/sections/SignUpPromotionSection";
-import { CustomerNeedsSection } from "@/components/sections/CustomerNeedsSection";
 import { TravelPortalInfoSection } from "@/components/sections/TravelPortalInfoSection";
 import { CtaSection } from "@/components/sections/CtaSection";
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';

@@ -29,7 +29,7 @@ export const PartnerBenefitsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why <span className="text-wonder-600">Wonder</span><span className="text-partner-600">Holidays</span>?
+            Why <span className="text-wonder-600">MyPartner</span><span className="text-partner-600">KetakiWorld</span>?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Join us to discover the smart way to grow your business

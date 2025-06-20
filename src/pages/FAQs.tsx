@@ -7,11 +7,11 @@ import { Footer } from '../components/layout/Footer';
 
 const faqs = [
   {
-    question: "How do I sign up to become a partner with Wonder Holidays?",
+    question: "How do I sign up to become a partner with MyPartnerKetakiWorld?",
     answer: "You can easily sign up by providing your phone number, uploading your KYC documents, and completing the registration steps on our platform."
   },
   {
-    question: "What kind of travel services can I book through Wonder Holidays?",
+    question: "What kind of travel services can I book through MyPartnerKetakiWorld?",
     answer: "You can book flights, hotels, resorts, and complete travel packages worldwide through our platform."
   },
   {
@@ -27,11 +27,11 @@ const faqs = [
     answer: "We offer access to over 150 airline carriers and more than 4,00,000 hotel properties worldwide."
   },
   {
-    question: "Is my customer's information secure with Wonder Holidays?",
+    question: "Is my customer's information secure with MyPartnerKetakiWorld?",
     answer: "Absolutely. We ensure one hundred percent confidentiality and security of all booking and customer data."
   },
   {
-    question: "What kind of support does Wonder Holidays provide to partners?",
+    question: "What kind of support does MyPartnerKetakiWorld provide to partners?",
     answer: "Our team offers quick and reliable support to help you resolve queries and assist with bookings whenever you need."
   },
   {
@@ -43,7 +43,7 @@ const faqs = [
     answer: "Yes, partners benefit from exclusive rates and deals not available to the general public."
   },
   {
-    question: "Can I use Wonder Holidays to expand my business internationally?",
+    question: "Can I use MyPartnerKetakiWorld to expand my business internationally?",
     answer: "Yes, our platform offers a wide international inventory to help you serve customers traveling worldwide."
   },
   {
@@ -51,7 +51,7 @@ const faqs = [
     answer: "Most bookings are confirmed instantly, ensuring a smooth and fast experience for you and your customers."
   },
   {
-    question: "Can I access Wonder Holidays on mobile devices?",
+    question: "Can I access MyPartnerKetakiWorld on mobile devices?",
     answer: "Yes, our platform is fully responsive and works seamlessly on smartphones and tablets."
   },
   {
@@ -59,7 +59,7 @@ const faqs = [
     answer: "Yes, we provide easy-to-follow guides and support to help you get started quickly and confidently."
   },
   {
-    question: "Can I cancel or modify bookings through Wonder Holidays?",
+    question: "Can I cancel or modify bookings through MyPartnerKetakiWorld?",
     answer: "Yes, you can manage cancellations and modifications directly from the platform, subject to the provider's policies."
   },
   {

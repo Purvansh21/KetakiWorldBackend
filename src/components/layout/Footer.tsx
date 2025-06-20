@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -9,7 +8,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Column 1 - Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Wonder<span className="text-partner-400">Holidays</span></h3>
+            <h3 className="text-xl font-bold mb-4">MyPartner<span className="text-partner-400">KetakiWorld</span></h3>
             <p className="text-slate-300 mb-4">
               Transforming business travel for companies worldwide with our innovative B2B solutions.
             </p>
@@ -75,8 +74,8 @@ export const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-800">
-          <p className="text-slate-400 text-sm text-center">
-            © {new Date().getFullYear()} Wonder Holidays. All rights reserved.
+          <p className="text-center text-sm text-gray-500">
+            © {new Date().getFullYear()} MyPartnerKetakiWorld. All rights reserved.
           </p>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Logo } from "@/components/ui/logo";
 import { Globe } from "@/components/ui/globe";
 import { useInView } from "react-intersection-observer";
+import { SignInButton, SignUpButton } from '@clerk/clerk-react';
 
 // Memoize static content
 const TrustedBySection = memo(() => (
@@ -60,7 +61,9 @@ const GlobeSection = memo(() => {
         <div className="bg-white rounded-xl shadow-xl overflow-hidden p-6 text-gray-900 w-full mx-auto">
           <h2 className="text-2xl font-bold mb-2">Get Started</h2>
           <p className="text-gray-600 mb-6">Log in or create an account using your mobile number</p>
-          <GetStartedForm />
+          <SignInButton mode="modal">
+            <Button className="bg-partner-500 hover:bg-partner-600 text-white w-full">Get Started</Button>
+          </SignInButton>
         </div>
       </div>
     </div>
@@ -87,11 +90,11 @@ const HeaderContent = memo(() => {
         </span>
       </div>
       
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
-        Grow Your Travel Business with Wonder Holidays
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-left text-gray-900 leading-tight mb-6">
+        Grow Your Travel Business with MyPartnerKetakiWorld
       </h1>
       
-      <p className="text-xl text-gray-300 mb-8 max-w-xl">
+      <p className="text-xl text-gray-300 mb-8 max-w-xl text-left">
         Get access to unbeatable international travel deals, real-time booking tools, and personalized support built for travel agents like you.
       </p>
     </div>
@@ -101,82 +104,14 @@ const HeaderContent = memo(() => {
 // Memoize the action buttons
 const ActionButtons = memo(() => (
   <div className="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
+    <SignUpButton mode="modal">
     <Button className="bg-partner-500 hover:bg-partner-600 text-white">Become a Partner</Button>
+    </SignUpButton>
+    <SignInButton mode="modal">
     <Button variant="secondary">Login</Button>
+    </SignInButton>
   </div>
 ));
-
-// Separate form component to manage its own state
-const GetStartedForm = memo(() => {
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null); // Clear previous errors
-    if (!mobileNumber || mobileNumber.length < 10) {
-      toast.error("Please enter a valid mobile number");
-      return;
-    }
-    
-    setIsSubmitting(true);
-    try {
-      // TODO: Replace with actual backend API call to send OTP
-      console.log(`Sending OTP to ${mobileNumber}`);
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // Assuming success, show success toast and potentially move to OTP verification step
-      toast.success("OTP sent to your mobile number!");
-      // TODO: Add logic to navigate to OTP verification form/step
-
-    } catch (err) {
-      // TODO: Handle API errors more specifically if needed
-      console.error("Failed to send OTP:", err);
-      setError("Failed to send OTP. Please try again.");
-      toast.error("Failed to send OTP.");
-    } finally {
-      setIsSubmitting(false);
-    }
-
-  }, [mobileNumber]);
-
-  const handleMobileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setMobileNumber(e.target.value);
-  }, []);
-
-  return (
-              <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                  <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
-                  <div className="flex">
-                    <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500">
-                      +91
-                    </span>
-                    <Input
-                      id="mobile"
-                      type="tel"
-                      placeholder="Enter Mobile Number"
-                      value={mobileNumber}
-                      onChange={handleMobileChange}
-                      className="rounded-l-none"
-                      maxLength={10}
-                    />
-                  </div>
-                </div>
-                {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-                
-                <Button 
-                  type="submit" 
-                  className="w-full bg-partner-500 hover:bg-partner-600 text-white"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Sending OTP..." : "CONTINUE"}
-                </Button>
-              </form>
-  );
-});
 
 // Optimize wave divider with hardware acceleration
 const WaveDivider = memo(() => (
@@ -199,7 +134,7 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-partner-600/20 via-wonder-900/10 to-transparent"></div>
       
       <div className="container mx-auto px-4 py-16 md:py-24 lg:py-28 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-center justify-between">
+        <div className="flex flex-col lg:flex-row gap-12 items-center justify-center lg:items-center lg:justify-between">
           <div className="w-full lg:w-1/2">
             <HeaderContent />
             <FeaturesList />
