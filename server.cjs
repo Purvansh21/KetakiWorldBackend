@@ -22,7 +22,9 @@ const allowedOrigins = [
   'http://localhost:8080',
   'http://localhost:5173',
   'http://localhost:3000',
-  'https://your-production-domain.com', // <-- Replace with your real production domain
+  'https://your-production-domain.com',
+  'https://mypartnerketakiworld.onrender.com' 
+// <-- Replace with your real production domain
 ];
 
 app.use(cors({
