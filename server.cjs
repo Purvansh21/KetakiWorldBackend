@@ -115,7 +115,7 @@ async function requireClerkAuth(req, res, next) {
     const protocol = req.protocol || 'http';
     const host = req.get('host');
     const fullUrl = `${protocol}://${host}${req.originalUrl}`;
-    req.url = fullUrl;
+    //req.url = fullUrl;
 
     const authenticationResult = await clerkClient.authenticateRequest(req, {
       jwtKey: process.env.CLERK_JWT_KEY,
