@@ -251,7 +251,12 @@ app.use((err, req, res, next) => {
 });
 
 // Serve static files from /public first
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  express.static(
+    path.join(__dirname, '..', 'public')
+  )
+);
+
 
 // Catch-all for everything except /api/*, using a RegExp so path-to-regexp
 // doesn’t try to parse any stray ":" or "*" tokens.
