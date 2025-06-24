@@ -13,7 +13,7 @@ const winston = require('winston');
 const path = require('path');
 require('dotenv').config();
 
-console.log('CLERK_PUBLISHABLE_KEY:', process.env.CLERK_PUBLISHABLE_KEY);
+
 
 const app = express();
 
