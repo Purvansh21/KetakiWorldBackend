@@ -252,17 +252,14 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
+// Serve everything in dist/ (your Vite output)
 const distDir = path.join(__dirname, '..', 'dist');
 app.use(express.static(distDir));
 
-
-// SPA catch-all: any non-API path should load index.html
+// SPA fallback: on any non-/api/* GET, send dist/index.html
 app.get(/^(?!\/api\/).*/, (req, res) => {
-  res.sendFile(
-    path.join(__dirname, '..', 'public', 'index.html')
-  );
+  res.sendFile(path.join(distDir, 'index.html'));
 });
-
 // Start the server
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
