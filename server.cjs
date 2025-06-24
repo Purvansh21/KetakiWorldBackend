@@ -14,7 +14,9 @@ const helmet = require('helmet');
 const winston = require('winston');
 const path = require('path');
 require('dotenv').config();
-
+const fs = require('fs');
+console.log('🚧 CWD:', process.cwd());
+console.log('🚧 Files in project root:', fs.readdirSync(process.cwd()));
 
 
 const app = express();
