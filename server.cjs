@@ -39,7 +39,7 @@ app.use(cors({
 }));
 
 // Add rate limiting
-app.use('/api/', rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
+app.use('/api', rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 
 // Multer setup for file uploads (max 25MB per file)
 const upload = multer({ dest: 'uploads/', limits: { fileSize: 25 * 1024 * 1024 } }).fields([
