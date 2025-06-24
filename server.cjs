@@ -10,6 +10,7 @@ const { z } = require('zod');
 const { verifyToken, createClerkClient } = require('@clerk/backend');
 const helmet = require('helmet');
 const winston = require('winston');
+const path = require('path');
 require('dotenv').config();
 
 console.log('CLERK_PUBLISHABLE_KEY:', process.env.CLERK_PUBLISHABLE_KEY);
@@ -243,6 +244,15 @@ app.use((err, req, res, next) => {
     return res.status(429).json({ error: 'You have submitted too many requests. Please wait a few minutes and try again.' });
   }
   next(err);
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+// For SPA: serve index.html for any unknown route (except API)
+app.get('*', (req, res) => {
+  if (!req.path.startsWith('/api/')) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  }
 });
 
 // Start the server
