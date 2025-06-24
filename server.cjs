@@ -250,18 +250,18 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-// Serve static files from /public first
+// Serve static files from the real public directory
 app.use(
   express.static(
     path.join(__dirname, '..', 'public')
   )
 );
 
-
-// Catch-all for everything except /api/*, using a RegExp so path-to-regexp
-// doesn’t try to parse any stray ":" or "*" tokens.
+// SPA catch-all: any non-API path should load index.html
 app.get(/^(?!\/api\/).*/, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(
+    path.join(__dirname, '..', 'public', 'index.html')
+  );
 });
 
 // Start the server
