@@ -257,6 +257,15 @@ app.get('/*', (req, res) => {
   }
 });
 
+console.log(
+  "Registered routes:",
+  app._router.stack
+    .filter(l => l.route)
+    .map(l => {
+      const m = Object.keys(l.route.methods).map(x => x.toUpperCase()).join(",");
+      return `${m} ${l.route.path}`;
+    })
+);
 // Start the server
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
