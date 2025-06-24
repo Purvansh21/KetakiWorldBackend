@@ -86,7 +86,26 @@ const logger = winston.createLogger({
   ],
 });
 
+
 app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        "script-src": [
+          "'self'",
+          "https://innocent-moth-72.clerk.accounts.dev",
+        ],
+        "connect-src": [
+          "'self'",
+          "https://innocent-moth-72.clerk.accounts.dev",
+        ],
+      },
+    },
+  })
+);
+
 
 const clerkClient = createClerkClient({
   secretKey: process.env.CLERK_SECRET_KEY,
