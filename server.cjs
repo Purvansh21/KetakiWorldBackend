@@ -14,7 +14,7 @@ const helmet = require('helmet');
 const winston = require('winston');
 const path = require('path');
 require('dotenv').config();
-const fs = require('fs');
+
 console.log('🚧 CWD:', process.cwd());
 console.log('🚧 Files in project root:', fs.readdirSync(process.cwd()));
 
@@ -252,11 +252,8 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-const publicRoot = path.join(__dirname, '..');           // one up is project root
-// If your build outputs to `dist/`, use:
-// const publicRoot = path.join(__dirname, '..', 'dist');
-
-app.use(express.static(publicRoot));
+const distDir = path.join(__dirname, '..', 'dist');
+app.use(express.static(distDir));
 
 
 // SPA catch-all: any non-API path should load index.html
