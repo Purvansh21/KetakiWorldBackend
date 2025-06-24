@@ -250,22 +250,15 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
+// Serve static files from /public first
 app.use(express.static(path.join(__dirname, 'public')));
 
-// For SPA: serve index.html for any unknown route (except API)
+// Catch-all for everything except /api/*, using a RegExp so path-to-regexp
+// doesn’t try to parse any stray ":" or "*" tokens.
 app.get(/^(?!\/api\/).*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-console.log(
-  "Registered routes:",
-  app._router.stack
-    .filter(l => l.route)
-    .map(l => {
-      const m = Object.keys(l.route.methods).map(x => x.toUpperCase()).join(",");
-      return `${m} ${l.route.path}`;
-    })
-);
 // Start the server
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
