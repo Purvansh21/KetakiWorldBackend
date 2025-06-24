@@ -250,12 +250,12 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-// Serve static files from the real public directory
-app.use(
-  express.static(
-    path.join(__dirname, '..', 'public')
-  )
-);
+const publicRoot = path.join(__dirname, '..');           // one up is project root
+// If your build outputs to `dist/`, use:
+// const publicRoot = path.join(__dirname, '..', 'dist');
+
+app.use(express.static(publicRoot));
+
 
 // SPA catch-all: any non-API path should load index.html
 app.get(/^(?!\/api\/).*/, (req, res) => {
