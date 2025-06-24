@@ -1,5 +1,5 @@
 // server.cjs
-console.log("🚀 Starting deployed server.cjs (version X)");
+
 
 const express = require('express');
 const multer = require('multer');
