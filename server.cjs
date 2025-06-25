@@ -87,24 +87,45 @@ const logger = winston.createLogger({
 });
 
 
-app.use(helmet());
 app.use(
   helmet({
     contentSecurityPolicy: {
       useDefaults: true,
       directives: {
+        // allow your own code plus Clerk’s script
         "script-src": [
           "'self'",
-          "https://innocent-moth-72.clerk.accounts.dev",
+          "https://innocent-moth-72.clerk.accounts.dev"
         ],
+        // allow blob workers and include them in script-src-elem too
+        "worker-src": [
+          "'self'",
+          "blob:"
+        ],
+        "script-src-elem": [
+          "'self'",
+          "blob:",
+          "https://innocent-moth-72.clerk.accounts.dev"
+        ],
+        // allow your own origin plus data URIs and these external hosts
+        "img-src": [
+          "'self'",
+          "data:",
+          "https://images.unsplash.com",
+          "https://unpkg.com",
+          "https://img.clerk.com"
+        ],
+        // allow Clerk API connections
         "connect-src": [
           "'self'",
-          "https://innocent-moth-72.clerk.accounts.dev",
+          "https://innocent-moth-72.clerk.accounts.dev"
         ],
-      },
-    },
+        // keep all other directives at their default Helmet values
+      }
+    }
   })
 );
+
 
 
 const clerkClient = createClerkClient({
