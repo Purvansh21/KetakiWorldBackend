@@ -99,12 +99,13 @@ const Onboarding = () => {
       formData.append('clerkEmail', user?.primaryEmailAddress?.emailAddress || '');
       // Get Clerk JWT using useAuth
       // Onboarding.tsx → handleSubmit
-      const token = await getToken({ template: "jwt" });
-      const res = await fetch('/api/onboarding', {
+      const token = await getToken();
+      const apiUrl = 'https://mypartnerketakiworld.onrender.com/api/onboarding';
+      // POST to backend with Clerk JWT
+      const res = await fetch(apiUrl, {
         method: 'POST',
         headers: token ? { Authorization: `Bearer ${token}` } : {},
         body: formData,
-        credentials: 'include'
       });
 
       if (!res.ok) {
