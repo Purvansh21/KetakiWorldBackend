@@ -189,7 +189,7 @@ async function requireClerkAuth(req, res, next) {
     next();
   } catch (err) {
     console.error('Clerk authentication error:', err);
-    res.status(401).json({ error: 'Authentication failed. Please log in.' });
+    res.status(401).json({ error: 'Authentication failed. Please log in again and try.' });
   }
 }
 
