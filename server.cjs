@@ -19,7 +19,7 @@ console.log('🚧 CWD:', process.cwd());
 console.log('🚧 Files in project root:', fs.readdirSync(process.cwd()));
 
 const app = express();
-app.set('trust proxy', true);
+
 // ------------------------------
 // 1) SECURITY: Helmet + CSP
 // ------------------------------
