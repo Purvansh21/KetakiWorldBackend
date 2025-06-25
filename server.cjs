@@ -15,9 +15,7 @@ const path          = require('path');
 const { GoogleAuth } = require('google-auth-library');
 require('dotenv').config();
 
-// --- Sanity logs (optional) ---
-console.log('🚧 CWD:', process.cwd());
-console.log('🚧 Files in project root:', fs.readdirSync(process.cwd()));
+
 
 const app = express();
 
@@ -115,7 +113,7 @@ const upload = multer({
 // 5) Google Drive setup
 // ------------------------------
 // New Service Account–based Drive setup
-const { GoogleAuth } = require('google-auth-library');
+
 
 const saKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_JSON;
 let saKey;
