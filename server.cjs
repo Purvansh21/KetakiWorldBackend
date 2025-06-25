@@ -114,49 +114,25 @@ const upload = multer({
 // ------------------------------
 // 5) Google Drive setup
 // ------------------------------
-const saKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_JSON;
+// New Service Account–based Drive setup
+const { GoogleAuth } = require('google-auth-library');
 
-// Parse the JSON key (or decode if base64‐encoded)
+const saKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_JSON;
 let saKey;
 try {
-  // Try to parse as raw JSON
   saKey = JSON.parse(saKeyRaw);
 } catch {
-  // If that fails, assume it's base64
-  const decoded = Buffer.from(saKeyRaw, 'base64').toString('utf8');
-  saKey = JSON.parse(decoded);
+  // if you stored it base64-encoded
+  const json = Buffer.from(saKeyRaw, 'base64').toString('utf8');
+  saKey = JSON.parse(json);
 }
 
-// Create a GoogleAuth client using the Service Account key
 const auth = new GoogleAuth({
   credentials: saKey,
   scopes: ['https://www.googleapis.com/auth/drive.file']
 });
 
-// Instanciate the Drive API with that auth
 const drive = google.drive({ version: 'v3', auth });
-
-// Helper to upload files:
-async function uploadToDrive(file, folderId) {
-  const res = await drive.files.create({
-    requestBody: { name: file.originalname, parents: [folderId] },
-    media: { mimeType: file.mimetype, body: fs.createReadStream(file.path) },
-    fields: 'id, webViewLink',
-  });
-  // Share the file link if needed, then cleanup...
-  await drive.permissions.create({
-    fileId: res.data.id,
-    requestBody: {
-      role: 'reader',
-      type: 'user',
-      emailAddress: 'testmail0532949@gmail.com',
-    },
-  });
-  fs.unlinkSync(file.path);
-  return res.data.webViewLink;
-}
-
-
 
 async function uploadToDrive(file, folderId) {
   const res = await drive.files.create({
@@ -171,6 +147,7 @@ async function uploadToDrive(file, folderId) {
   fs.unlinkSync(file.path);
   return res.data.webViewLink;
 }
+
 
 // ------------------------------
 // 6) Zod schema & logger
