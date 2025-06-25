@@ -175,11 +175,20 @@ const clerkClient = createClerkClient({
 });
 async function requireClerkAuth(req, res, next) {
   try {
+    // Build the full URL for Clerk
+    const protocol = req.protocol || 'http';
+    const host = req.get('host');
+    const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+    req.url = fullUrl;
+
     const authenticationResult = await clerkClient.authenticateRequest(req, {
-      jwtKey: process.env.CLERK_JWT_KEY,
+      jwtKey: processedJwtKey,
       authorizedParties: allowedOrigins
     });
-    if (!authenticationResult.isSignedIn) {
+
+    const { isSignedIn, session, userId } = authenticationResult;
+
+    if (!isSignedIn) {
       throw new Error('Not signed in');
     }
     req.clerkUser = {
@@ -188,11 +197,11 @@ async function requireClerkAuth(req, res, next) {
     };
     next();
   } catch (err) {
+    // Log the full error object for detailed debugging
     console.error('Clerk authentication error:', err);
     res.status(401).json({ error: 'Authentication failed. Please log in again and try.' });
   }
 }
-
 // ------------------------------
 // 8) Onboarding API Route
 // ------------------------------
