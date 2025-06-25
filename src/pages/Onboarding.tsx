@@ -99,12 +99,11 @@ const Onboarding = () => {
       formData.append('clerkEmail', user?.primaryEmailAddress?.emailAddress || '');
       // Get Clerk JWT using useAuth
       const token = await getToken();
-      const apiUrl = 'http://localhost:3000/api/onboarding';
-      // POST to backend with Clerk JWT
-      const res = await fetch(apiUrl, {
+      const res = await fetch('/api/onboarding', {
         method: 'POST',
         headers: token ? { Authorization: `Bearer ${token}` } : {},
         body: formData,
+        credentials: 'include'
       });
 
       if (!res.ok) {
