@@ -78,7 +78,12 @@ const allowedOrigins = [
   'https://mypartnerketakiworld.onrender.com'
 ];
 
-console.log('🚧 Allowed CORS Origins:', allowedOrigins);
+const rawJwtKey = process.env.CLERK_JWT_KEY;
+// Attempt to replace escaped newlines if they are present in the environment variable
+const processedJwtKey = rawJwtKey ? rawJwtKey.replace(/\\n/g, '\n') : undefined;
+
+// Add a log to show the start of the JWT Key being read (first 50 chars)
+console.log('🚧 Processed CLERK_JWT_KEY start:', processedJwtKey ? processedJwtKey.substring(0, 50) + '...' : 'Not Set');
 
 app.use(cors({
   origin: (origin, cb) => {
