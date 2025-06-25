@@ -67,6 +67,9 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://mypartnerketakiworld.onrender.com'
 ];
+
+console.log('🚧 Allowed CORS Origins:', allowedOrigins);
+
 app.use(cors({
   origin: (origin, cb) => {
     if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
@@ -102,6 +105,18 @@ const oAuth2Client = new google.auth.OAuth2(
 );
 oAuth2Client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN });
 const drive = google.drive({ version: 'v3', auth: oAuth2Client });
+
+if (process.env.CLERK_PUBLISHABLE_KEY && process.env.CLERK_PUBLISHABLE_KEY.startsWith('pk_test_')) {
+  console.log('🚧 Clerk is using TESTING publishable key.');
+}
+if (process.env.CLERK_SECRET_KEY && process.env.CLERK_SECRET_KEY.startsWith('sk_test_')) {
+  console.log('🚧 Clerk is using TESTING secret key.');
+}
+
+// Existing logs for key types
+console.log('🚧 Clerk Publishable Key Type:', process.env.CLERK_PUBLISHABLE_KEY ? (process.env.CLERK_PUBLISHABLE_KEY.startsWith('pk_live_') ? 'Production' : 'Development') : 'Not Set');
+console.log('🚧 Clerk Secret Key Type:', process.env.CLERK_SECRET_KEY ? (process.env.CLERK_SECRET_KEY.startsWith('sk_live_') ? 'Production' : 'Development') : 'Not Set');
+
 
 async function uploadToDrive(file, folderId) {
   const res = await drive.files.create({
