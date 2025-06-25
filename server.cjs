@@ -12,6 +12,7 @@ const { verifyToken, createClerkClient } = require('@clerk/backend');
 const helmet        = require('helmet');
 const winston       = require('winston');
 const path          = require('path');
+const { GoogleAuth } = require('google-auth-library');
 require('dotenv').config();
 
 // --- Sanity logs (optional) ---
@@ -113,24 +114,48 @@ const upload = multer({
 // ------------------------------
 // 5) Google Drive setup
 // ------------------------------
-const oAuth2Client = new google.auth.OAuth2(
-  process.env.GOOGLE_CLIENT_ID,
-  process.env.GOOGLE_CLIENT_SECRET,
-  'http://localhost'
-);
-oAuth2Client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN });
-const drive = google.drive({ version: 'v3', auth: oAuth2Client });
+const saKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_JSON;
 
-if (process.env.CLERK_PUBLISHABLE_KEY && process.env.CLERK_PUBLISHABLE_KEY.startsWith('pk_test_')) {
-  console.log('🚧 Clerk is using TESTING publishable key.');
-}
-if (process.env.CLERK_SECRET_KEY && process.env.CLERK_SECRET_KEY.startsWith('sk_test_')) {
-  console.log('🚧 Clerk is using TESTING secret key.');
+// Parse the JSON key (or decode if base64‐encoded)
+let saKey;
+try {
+  // Try to parse as raw JSON
+  saKey = JSON.parse(saKeyRaw);
+} catch {
+  // If that fails, assume it's base64
+  const decoded = Buffer.from(saKeyRaw, 'base64').toString('utf8');
+  saKey = JSON.parse(decoded);
 }
 
-// Existing logs for key types
-console.log('🚧 Processed CLERK_JWT_KEY length:', processedJwtKey ? processedJwtKey.length : 'Not Set');
-console.log('🚧 Processed CLERK_JWT_KEY (first 200 chars):', processedJwtKey ? processedJwtKey.substring(0, 200) + '...' : 'Not Set');
+// Create a GoogleAuth client using the Service Account key
+const auth = new GoogleAuth({
+  credentials: saKey,
+  scopes: ['https://www.googleapis.com/auth/drive.file']
+});
+
+// Instanciate the Drive API with that auth
+const drive = google.drive({ version: 'v3', auth });
+
+// Helper to upload files:
+async function uploadToDrive(file, folderId) {
+  const res = await drive.files.create({
+    requestBody: { name: file.originalname, parents: [folderId] },
+    media: { mimeType: file.mimetype, body: fs.createReadStream(file.path) },
+    fields: 'id, webViewLink',
+  });
+  // Share the file link if needed, then cleanup...
+  await drive.permissions.create({
+    fileId: res.data.id,
+    requestBody: {
+      role: 'reader',
+      type: 'user',
+      emailAddress: 'testmail0532949@gmail.com',
+    },
+  });
+  fs.unlinkSync(file.path);
+  return res.data.webViewLink;
+}
+
 
 
 async function uploadToDrive(file, folderId) {
