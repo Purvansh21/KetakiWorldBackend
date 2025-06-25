@@ -129,8 +129,8 @@ if (process.env.CLERK_SECRET_KEY && process.env.CLERK_SECRET_KEY.startsWith('sk_
 }
 
 // Existing logs for key types
-console.log('🚧 Clerk Publishable Key Type:', process.env.CLERK_PUBLISHABLE_KEY ? (process.env.CLERK_PUBLISHABLE_KEY.startsWith('pk_live_') ? 'Production' : 'Development') : 'Not Set');
-console.log('🚧 Clerk Secret Key Type:', process.env.CLERK_SECRET_KEY ? (process.env.CLERK_SECRET_KEY.startsWith('sk_live_') ? 'Production' : 'Development') : 'Not Set');
+console.log('🚧 Processed CLERK_JWT_KEY length:', processedJwtKey ? processedJwtKey.length : 'Not Set');
+console.log('🚧 Processed CLERK_JWT_KEY (first 200 chars):', processedJwtKey ? processedJwtKey.substring(0, 200) + '...' : 'Not Set');
 
 
 async function uploadToDrive(file, folderId) {
