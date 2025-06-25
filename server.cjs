@@ -28,19 +28,22 @@ app.use(
     contentSecurityPolicy: {
       useDefaults: true,
       directives: {
+        // your own code + Clerk’s remote bundle
         "script-src": [
           "'self'",
           "https://innocent-moth-72.clerk.accounts.dev"
         ],
+        // allow <script> tags from same sources
+        "script-src-elem": [
+          "'self'",
+          "https://innocent-moth-72.clerk.accounts.dev"
+        ],
+        // allow Web Workers spun up via blob:
         "worker-src": [
           "'self'",
           "blob:"
         ],
-        "script-src-elem": [
-          "'self'",
-          "blob:",
-          "https://innocent-moth-72.clerk.accounts.dev"
-        ],
+        // images from your own origin, data URIs, and the external hosts
         "img-src": [
           "'self'",
           "data:",
@@ -48,15 +51,22 @@ app.use(
           "https://unpkg.com",
           "https://img.clerk.com"
         ],
+        // fetch/XHR to Clerk APIs, telemetry, your local dev, and production API
         "connect-src": [
           "'self'",
           "https://innocent-moth-72.clerk.accounts.dev",
-          "https://clerk-telemetry.com"
+          "https://clerk-telemetry.com",
+          "http://localhost:3000",
+          "http://localhost:5173",
+          "http://localhost:8080",
+          "https://mypartnerketakiworld.onrender.com"
         ],
+        // leave everything else at Helmet’s defaults
       }
     }
   })
 );
+
 
 // ------------------------------
 // 2) CORS
