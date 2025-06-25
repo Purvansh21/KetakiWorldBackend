@@ -98,7 +98,8 @@ const Onboarding = () => {
       Object.entries(form).forEach(([key, val]) => formData.append(key, val));
       formData.append('clerkEmail', user?.primaryEmailAddress?.emailAddress || '');
       // Get Clerk JWT using useAuth
-      const token = await getToken();
+      // Onboarding.tsx → handleSubmit
+      const token = await getToken({ template: "jwt" });
       const res = await fetch('/api/onboarding', {
         method: 'POST',
         headers: token ? { Authorization: `Bearer ${token}` } : {},
